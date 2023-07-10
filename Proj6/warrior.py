@@ -7,47 +7,23 @@
 """
 from abc import ABC, abstractmethod
 from die import Die
-
-
-class Warrior(ABC):
-    def __init__(self, player_pos):  # for homework 4 #, aiController:bool):
-        self.player_pos = player_pos
-        self.d20 = Die(20)
-        self.d10 = Die(10)
-        self.d8 = Die(8)
-        self.d4 = Die(4)
-
-        # hitpoints, max is set
-        # Warrior uses four d10 to calculate their starting Hit Points.
-        # we do this here, instead of in a separate method
-        self.maxHitPoints = self.d10.roll() + self.d10.roll() + self.d10.roll() + self.d10.roll()
-        self.hitPoints = self.maxHitPoints  # start perfectly healthy
-
-    # Abstract Method for Attack
-    @abstractmethod
-    def attack(self) -> int:
-        pass
-
-    # Abstract Method for dealing damage (or healing)
-    @abstractmethod
-    def takeDamage(self) -> int:
-        pass
+from character import Character
 
 
 
-    # add methods here
-
-    """
-       This method handles the attack logic
-       @return the amount of damage an attack has caused, 0 if the attack misses or
-               a negative amount of damage if the Mugwump heals itself
-     """
-# Create a RealWarrior from the abstract class
-class RealWarrior(Warrior):
+"""
+   This method handles the attack logic
+   @return the amount of damage an attack has caused, 0 if the attack misses or
+           a negative amount of damage if the Mugwump heals itself
+ """
+# Create a RealWarrior from the abstract Character class
+class RealWarrior(Character):
     def __init__(self, player_pos: int):
         super().__init__(player_pos)
         self.player_pos = player_pos
-
+        
+        self.maxHitPoints = self.d10.roll() + self.d10.roll() + self.d10.roll() + self.d10.roll()
+        self.hitPoints = self.maxHitPoints  # start perfectly healthy
     # ask user for attack to use
     def attackChoice(self) -> int:  # this should be testable, see https://stackoverflow.com/questions/35851323/how-to-test-a-function-with-input-call
         # check for applicable attack styles
@@ -112,3 +88,6 @@ class RealWarrior(Warrior):
             attack_type = 2
 
         return attack_type
+    
+warrior = RealWarrior(1)
+print(warrior.maxHitPoints)
