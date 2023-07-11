@@ -60,7 +60,7 @@ def main():  # not testable
                 choice = input("Do you want to save your character?: 'Yes' or 'No'.")
                 if choice == "Yes":
                     name = input("What do you want to name your character?")
-                    save_player(name, playerOne.maxHitPoints, playerOne.hitPoints, "Warrior")
+                    save_player(name, playerOne.maxHitPoints, playerOne.hitPoints, playerOne.name)
                 # ask to play again
                 keep_playing = playAgain()
 

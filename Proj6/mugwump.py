@@ -21,6 +21,7 @@ class RealMugwump(Character):
     def __init__(self, player_pos: int):
         super().__init__(player_pos)
         self.player_pos = player_pos
+        self.name = "Mugwump"
         
         # hitpoints, max is set
         # Mugwump uses six d10 to calculate their starting Hit Points.

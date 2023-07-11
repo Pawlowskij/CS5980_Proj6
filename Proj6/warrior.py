@@ -21,6 +21,7 @@ class RealWarrior(Character):
     def __init__(self, player_pos: int):
         super().__init__(player_pos)
         self.player_pos = player_pos
+        self.name = "Warrior"
         
         self.maxHitPoints = self.d10.roll() + self.d10.roll() + self.d10.roll() + self.d10.roll()
         self.hitPoints = self.maxHitPoints  # start perfectly healthy

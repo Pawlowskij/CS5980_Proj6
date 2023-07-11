@@ -12,6 +12,7 @@ class Character(ABC):
         self.d8 = Die(8)
         self.d6 = Die(6)
         self.d4 = Die(4)
+        self.name = "Character"
 
         # hitpoints, max is set
         # Mugwump uses six d10 to calculate their starting Hit Points.
