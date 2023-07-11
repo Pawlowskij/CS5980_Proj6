@@ -9,6 +9,7 @@
 from mugwump import RealMugwump
 from warrior import RealWarrior
 from die import Die
+from save_player import save_player
 """
  BattleSim Driver for Battle Simulator 3000
  You may need to set the Python interpreter if you have an error along the top. Choose local, and it should find it
@@ -51,10 +52,15 @@ def main():  # not testable
             report(playerOne, playerTwo)
             victor = battle(playerOne, playerTwo)
 
+
         # declare the winner
             if (victor != "none"): # one of them has won
                 report(playerOne, playerTwo)
                 victory(victor)
+                choice = input("Do you want to save your character?: 'Yes' or 'No'.")
+                if choice == "Yes":
+                    name = input("What do you want to name your character?")
+                    save_player(name, playerOne.maxHitPoints, playerOne.hitPoints, "Warrior")
                 # ask to play again
                 keep_playing = playAgain()
 
