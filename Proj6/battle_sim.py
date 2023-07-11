@@ -10,6 +10,7 @@ from mugwump import RealMugwump
 from warrior import RealWarrior
 from die import Die
 from save_player import save_player
+from bulette import Bulette
 """
  BattleSim Driver for Battle Simulator 3000
  You may need to set the Python interpreter if you have an error along the top. Choose local, and it should find it
@@ -85,14 +86,16 @@ def intro():  # not testable
 # function to select the first character (player controlled)
 def playerOneSelect():
     while True:
-        player = input("Please select your player: 'Warrior' or 'Mugwump'.")
+        player = input("Please select your player: 'Warrior', 'Mugwump' or 'Bulette'.")
         print(player)
         if player.lower() == 'warrior':
             return RealWarrior(1)
-        if player.lower() == 'mugwump':
+        elif player.lower() == 'mugwump':
             return RealMugwump(1)
+        elif player.lower() == 'bulette':
+            return Bulette(1)
         else:
-            print("Please enter either warrior or mugwump")
+            print("Please enter either warrior, mugwump or bulette")
 
 # function to select the computer player
 def playerTwoSelect():
@@ -102,8 +105,10 @@ def playerTwoSelect():
             return RealWarrior(2)
         elif player.lower() == 'mugwump':
             return RealMugwump(2)
+        elif player.lower() == 'bulette':
+            return Bulette(2)
         else:
-            print("Please enter either warrior or mugwump")
+            print("Please enter either warrior, mugwump or bulette")
 """
    This method handles the battle logic for the game.
    @param warrior The Warrior of Light!
