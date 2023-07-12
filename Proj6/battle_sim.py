@@ -5,7 +5,6 @@
     Name: FIXME
     Created: FIXME
 """
-import os
 
 from mugwump import RealMugwump
 from warrior import RealWarrior
