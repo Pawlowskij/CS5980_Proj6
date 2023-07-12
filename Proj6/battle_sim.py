@@ -5,12 +5,15 @@
     Name: FIXME
     Created: FIXME
 """
+import os
 
 from mugwump import RealMugwump
 from warrior import RealWarrior
 from die import Die
 from save_player import save_player
+from load_player import *
 from bulette import Bulette
+from paladin import Paladin
 """
  BattleSim Driver for Battle Simulator 3000
  You may need to set the Python interpreter if you have an error along the top. Choose local, and it should find it
@@ -59,7 +62,7 @@ def main():  # not testable
                 report(playerOne, playerTwo)
                 victory(victor)
                 choice = input("Do you want to save your character?: 'Yes' or 'No'.")
-                if choice == "Yes":
+                if choice.lower() == "yes":
                     name = input("What do you want to name your character?")
                     save_player(name, playerOne.maxHitPoints, playerOne.hitPoints, playerOne.name)
                 # ask to play again
@@ -85,30 +88,56 @@ def intro():  # not testable
 
 # function to select the first character (player controlled)
 def playerOneSelect():
-    while True:
-        player = input("Please select your player: 'Warrior', 'Mugwump' or 'Bulette'.")
-        print(player)
-        if player.lower() == 'warrior':
-            return RealWarrior(1)
-        elif player.lower() == 'mugwump':
-            return RealMugwump(1)
-        elif player.lower() == 'bulette':
-            return Bulette(1)
-        else:
-            print("Please enter either warrior, mugwump or bulette")
+    
+    player_file = load_player()
+    if player_file != None:
+        max_hitpoints, current_hp, player_class = player_file
+    
+        if player_class == 'warrior':
+            player = RealWarrior(1)
+            player.maxHitPoints = max_hitpoints
+            player.hitPoints = current_hp
+            return player
+        elif player_class == 'mugwump':
+            player = RealMugwump(1)
+            player.maxHitPoints = max_hitpoints
+            player.hitPoints = current_hp
+            return player
+        elif player_class == 'bulette':
+            player = Bulette(1)
+            player.maxHitPoints = max_hitpoints
+            player.hitPoints = current_hp
+            return player
+            
+    else:        
+        while True:
+            player = input("Please select your player: 'Warrior', 'Mugwump', 'Bulette' or Paladin.")
+            print(player)
+            if player.lower() == 'warrior':
+                return RealWarrior(1)
+            elif player.lower() == 'mugwump':
+                return RealMugwump(1)
+            elif player.lower() == 'bulette':
+                return Bulette(1)
+            elif player.lower() == 'paladin':
+                return Paladin(1)
+            else:
+                print("Please enter either warrior, mugwump, bulette or paladin")
 
 # function to select the computer player
 def playerTwoSelect():
     while True:
-        player = input("Please select your computer opponent: 'Warrior' or 'Mugwump'.")
+        player = input("Please select your computer opponent: 'Warrior', 'Mugwump', 'Bulette' or 'Paladin'.")
         if player.lower() == 'warrior':
             return RealWarrior(2)
         elif player.lower() == 'mugwump':
             return RealMugwump(2)
         elif player.lower() == 'bulette':
             return Bulette(2)
+        elif player.lower() == 'paladin':
+            return Paladin(2)
         else:
-            print("Please enter either warrior, mugwump or bulette")
+            print("Please enter either warrior, mugwump, bulette or paladin")
 """
    This method handles the battle logic for the game.
    @param warrior The Warrior of Light!

@@ -1,0 +1,6 @@
+{
+    "name": "Cheese",
+    "max-hitpoints": 24,
+    "current-hitpoints": 12,
+    "class": "Paladin"
+}

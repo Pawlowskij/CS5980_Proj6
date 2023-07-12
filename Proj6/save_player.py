@@ -14,3 +14,4 @@ def save_player(name, max_hitpoints, current_hp, player_class):
     # Writing to sample.json
     with open("player_save.json", "w") as outfile:
         outfile.write(json_object)
+        
