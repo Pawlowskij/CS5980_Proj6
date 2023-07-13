@@ -62,8 +62,7 @@ def main():  # not testable
                 victory(victor)
                 choice = input("Do you want to save your character?: 'Yes' or 'No'.")
                 if choice.lower() == "yes":
-                    name = input("What do you want to name your character?")
-                    save_player(name, playerOne.maxHitPoints, playerOne.hitPoints, playerOne.name)
+                    save_player(playerOne.user_name, playerOne.maxHitPoints, playerOne.hitPoints, playerOne.name)
                 # ask to play again
                 keep_playing = playAgain()
 
@@ -112,17 +111,27 @@ def playerOneSelect():
         while True:
             player = input("Please select your player: 'Warrior', 'Mugwump', 'Bulette' or Paladin.")
             print(player)
+            name = input("What do you want to name your character?")
             if player.lower() == 'warrior':
-                return RealWarrior(1)
+                player = RealWarrior(1)
+                player.user_name = name
+                return player
             elif player.lower() == 'mugwump':
-                return RealMugwump(1)
+                player = RealMugwump(1)
+                player.user_name = name
+                return player
             elif player.lower() == 'bulette':
-                return Bulette(1)
+                player = Bulette(1)
+                player.user_name = name
+                return player
             elif player.lower() == 'paladin':
-                return Paladin(1)
+                player = Paladin(1)
+                player.user_name = name
+                return player
             else:
                 print("Please enter either warrior, mugwump, bulette or paladin")
 
+        play
 # function to select the computer player
 def playerTwoSelect():
     while True:

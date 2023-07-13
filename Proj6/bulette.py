@@ -5,6 +5,7 @@ class Bulette(Character):
         self.player_pos = player_pos
         self.name = "Bulette"
         self.special_attack = 0
+        self.user_name = "blank"
 
         # hitpoints, max is set
         # Mugwump uses six d10 to calculate their starting Hit Points.

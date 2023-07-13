@@ -18,6 +18,7 @@ class Paladin(Character):
         self.player_pos = player_pos
         self.name = "Paladin"
         self.attack_buff = 1
+        self.user_name = "blank"
 
         
         # hitpoints, max is set

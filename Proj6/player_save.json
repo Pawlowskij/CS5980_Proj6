@@ -1,6 +1,6 @@
 {
-    "name": "Cheese",
-    "max-hitpoints": 24,
-    "current-hitpoints": 12,
-    "class": "Paladin"
+    "name": "Test",
+    "max-hitpoints": 34,
+    "current-hitpoints": 29,
+    "class": "Bulette"
 }
