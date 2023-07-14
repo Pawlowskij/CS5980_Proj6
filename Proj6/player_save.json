@@ -1,6 +1,6 @@
 {
-    "name": "Test 6",
-    "max-hitpoints": 24,
-    "current-hitpoints": 0,
-    "class": "Warrior"
+    "name": "Player4",
+    "max-hitpoints": 60,
+    "current-hitpoints": 60,
+    "class": "Bulette"
 }
