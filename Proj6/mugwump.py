@@ -17,7 +17,7 @@ from character import Character
  """
 
 # Create a RealMugwump from the abstract class
-class RealMugwump(Character):
+class Mugwump(Character):
     def __init__(self, player_pos: int):
         super().__init__(player_pos)
         self.player_pos = player_pos

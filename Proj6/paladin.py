@@ -114,7 +114,7 @@ class Paladin(Character):
             attack_type = 3
         else:
             # heal 15 %
-            attack_type = 3
+            attack_type = 4
 
         return attack_type
 

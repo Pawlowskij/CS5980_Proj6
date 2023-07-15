@@ -16,8 +16,8 @@ from character import Character
    @return the amount of damage an attack has caused, 0 if the attack misses or
            a negative amount of damage if the Mugwump heals itself
  """
-# Create a RealWarrior from the abstract Character class
-class RealWarrior(Character):
+# Create a Warrior from the abstract Character class
+class Warrior(Character):
     def __init__(self, player_pos: int):
         super().__init__(player_pos)
         self.player_pos = player_pos
@@ -90,6 +90,3 @@ class RealWarrior(Character):
             attack_type = 2
 
         return attack_type
-    
-warrior = RealWarrior(1)
-print(warrior.maxHitPoints)

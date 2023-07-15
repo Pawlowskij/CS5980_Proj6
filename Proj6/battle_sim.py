@@ -6,8 +6,8 @@
     Created: FIXME
 """
 
-from mugwump import RealMugwump
-from warrior import RealWarrior
+from mugwump import Mugwump
+from warrior import Warrior
 from die import Die
 from save_player import save_player
 from load_player import *
@@ -94,13 +94,13 @@ def playerOneSelect():
         name, max_hitpoints, current_hp, player_class = player_file
 
         if player_class == 'Warrior':
-            player = RealWarrior(1)
+            player = Warrior(1)
             player.maxHitPoints = max_hitpoints
             player.hitPoints = current_hp
             player.user_name = name
             return player
         elif player_class == 'Mugwump':
-            player = RealMugwump(1)
+            player = Mugwump(1)
             player.maxHitPoints = max_hitpoints
             player.hitPoints = current_hp
             player.user_name = name
@@ -127,11 +127,11 @@ def playerOneSelect():
             print(player)
             name = input("What do you want to name your character?")
             if player.lower() == 'warrior':
-                player = RealWarrior(1)
+                player = Warrior(1)
                 player.user_name = name
                 return player
             elif player.lower() == 'mugwump':
-                player = RealMugwump(1)
+                player = Mugwump(1)
                 player.user_name = name
                 return player
             elif player.lower() == 'bulette':
@@ -151,9 +151,9 @@ def playerTwoSelect():
     while True:
         player = input("Please select your computer opponent: 'Warrior', 'Mugwump', 'Bulette' or 'Paladin'.")
         if player.lower() == 'warrior':
-            return RealWarrior(2)
+            return Warrior(2)
         elif player.lower() == 'mugwump':
-            return RealMugwump(2)
+            return Mugwump(2)
         elif player.lower() == 'bulette':
             return Bulette(2)
         elif player.lower() == 'paladin':

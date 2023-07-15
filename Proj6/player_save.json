@@ -1,6 +1,6 @@
 {
     "name": "Player4",
-    "max-hitpoints": 60,
-    "current-hitpoints": 60,
-    "class": "Bulette"
+    "max-hitpoints": 41,
+    "current-hitpoints": 36,
+    "class": "Paladin"
 }
