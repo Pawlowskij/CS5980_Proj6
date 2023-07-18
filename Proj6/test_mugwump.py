@@ -1,12 +1,12 @@
 import pytest
 
-from mugwump import RealMugwump
+from mugwump import Mugwump
 from die import Die
 
 # create fixture mugwump
 @pytest.fixture
 def my_mugwump():
-    mugwump = RealMugwump(1)
+    mugwump = Mugwump(1)
     d10 = Die(10)
 
     # artificially set max hitpoints
@@ -17,7 +17,7 @@ def my_mugwump():
 # test that mugwump HP is same as the Max HP at initialization
 def test_Mugwump_hitpoints():
     # Create a Mugwump object
-    mugwumpHP = RealMugwump(1)
+    mugwumpHP = Mugwump(1)
     assert mugwumpHP.maxHitPoints == mugwumpHP.hitPoints
     # Test that HP is between 6 and 60
     assert mugwumpHP.maxHitPoints >= 6 and mugwumpHP.maxHitPoints <= 60
@@ -75,7 +75,7 @@ def test_attack(my_mugwump):
     assert my_mugwump.hitPoints == 20  # Hit points should remain unchanged
 
     # test heal
-    injuredMugwump = RealMugwump(1)
+    injuredMugwump = Mugwump(1)
     # artificially set max hitpoints
     injuredMugwump.maxHitPoints = 35
     #injury Mugwump to allow for heal
@@ -91,21 +91,21 @@ def test_ai(my_mugwump):
     # Test attack_type 1 (Razor-Sharp Claws)
     # Make the d20 roll to return 12 (<=12)
     my_mugwump.d20.roll = lambda: 12
-    assert my_mugwump._RealMugwump__ai() == 1
+    assert my_mugwump._Mugwump__ai() == 1
 
     # Test attack_type 2 (Their Fangs of Death)
     # Make the d20 roll to return 17 (12 < x <= 17)
     my_mugwump.d20.roll = lambda: 17
-    assert my_mugwump._RealMugwump__ai() == 2
+    assert my_mugwump._Mugwump__ai() == 2
 
     # Test attack_type 3 (Heal)
     # Make the d20 roll to return 18 (>17)
     my_mugwump.d20.roll = lambda: 18
-    assert my_mugwump._RealMugwump__ai() == 3
+    assert my_mugwump._Mugwump__ai() == 3
 
     # Test attack_type 2 when d20 roll is 13
     # Make the d20 roll to return 13 (equal to 13)
     my_mugwump.d20.roll = lambda: 13
-    assert my_mugwump._RealMugwump__ai() == 2
+    assert my_mugwump._Mugwump__ai() == 2
 
 
